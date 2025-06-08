@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(stargate)
-
-# C++ compiler
-#set(CLANG_NEEDED_VERSION "9.4.0")
+project(darksim)
 
 # C++ standard
 set(CXX_STANDARD 20)
