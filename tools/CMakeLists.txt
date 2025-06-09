@@ -1,1 +1,1 @@
-add_subdirectory(dark)
+add_subdirectory(stargate)

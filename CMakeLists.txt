@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(darksim)
+project(stargate)
 
 # C++ standard
 set(CXX_STANDARD 20)
