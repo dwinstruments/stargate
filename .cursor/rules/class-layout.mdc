@@ -1,0 +1,7 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Always start a C++ class by the public section and then the private section of the class.
+- The private section of a c++ class must always be after the public section.

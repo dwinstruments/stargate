@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Private variables members of a c++ class must start with an underscore. Such as _myPrivateVar

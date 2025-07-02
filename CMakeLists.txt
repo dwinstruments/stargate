@@ -69,4 +69,6 @@ execute_process(
 find_package(Threads REQUIRED)
 
 add_subdirectory(external)
+add_subdirectory(common)
+add_subdirectory(nl)
 add_subdirectory(tools)

@@ -1,0 +1,8 @@
+---
+description: 
+globs: *CMakeLists.txt
+alwaysApply: false
+---
+- We only create static libraries and executables in cmake. We never create shared libraries.
+- Shared libraries in CMake are named on the following pattern: sgc_mylibrary_s
+- All our shared library targets in cmake ends with an "_s"
