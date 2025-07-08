@@ -2,6 +2,7 @@ set(nl_sources
     Design.cpp
     Library.cpp
     SGCDB.cpp
+    Instance.cpp
 )
 
 add_library(sgc_nl_s STATIC ${nl_sources})

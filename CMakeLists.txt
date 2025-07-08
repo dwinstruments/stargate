@@ -68,6 +68,39 @@ execute_process(
 # Threads
 find_package(Threads REQUIRED)
 
+# Detect Homebrew flex installation
+if(CMAKE_HOST_SYSTEM_NAME MATCHES "Darwin")
+    execute_process(
+        COMMAND brew --prefix flex
+        RESULT_VARIABLE BREW_FLEX_RESULT
+        OUTPUT_VARIABLE BREW_FLEX_PREFIX
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+    if(BREW_FLEX_RESULT EQUAL 0 AND EXISTS "${BREW_FLEX_PREFIX}")
+        set(FLEX_EXECUTABLE "${BREW_FLEX_PREFIX}/bin/flex")
+        set(CMAKE_PREFIX_PATH "${BREW_FLEX_PREFIX}" ${CMAKE_PREFIX_PATH})
+    endif()
+endif()
+
+find_package(FLEX REQUIRED)
+
+# Validate FlexLexer.h availability
+if(NOT FLEX_INCLUDE_DIRS OR FLEX_INCLUDE_DIRS STREQUAL "FLEX_INCLUDE_DIR-NOTFOUND")
+    find_path(FLEX_INCLUDE_DIR FlexLexer.h
+        PATHS /usr/local/opt/flex/include
+              /opt/homebrew/include
+              /usr/local/include
+              /usr/include
+    )
+    if(FLEX_INCLUDE_DIR)
+        set(FLEX_INCLUDE_DIRS ${FLEX_INCLUDE_DIR})
+    else()
+        message(FATAL_ERROR "FlexLexer.h not found. Install flex development headers.")
+    endif()
+endif()
+
+message(STATUS "FLEX_INCLUDE_DIR ${FLEX_INCLUDE_DIRS}")
+
 add_subdirectory(external)
 add_subdirectory(common)
 add_subdirectory(nl)
